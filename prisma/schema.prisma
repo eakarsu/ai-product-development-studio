@@ -1,0 +1,213 @@
+// Generated schema — modeled after beautyhqio conventions.
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String
+  passwordHash String
+  role         Role     @default(ANALYST)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+enum Role {
+  ADMIN
+  MANAGER
+  ANALYST
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  actorId   String?
+  actorName String?
+  action    String
+  entity    String
+  entityId  String?
+  detail    String?
+  createdAt DateTime @default(now())
+}
+
+model ProductArea {
+  id        String   @id @default(cuid())
+  name String
+  owner String
+  sponsor String
+  metric String
+  northStar String
+  status String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  customerProblems CustomerProblem[]
+  productOpportunitys ProductOpportunity[]
+  specifications Specification[]
+  prototypes Prototype[]
+  testPlans TestPlan[]
+  pullRequestDrafts PullRequestDraft[]
+  approvalGates ApprovalGate[]
+  feedbackSignals FeedbackSignal[]
+  releaseCandidates ReleaseCandidate[]
+  metricMovements MetricMovement[]
+  designReviews DesignReview[]
+}
+
+model CustomerProblem {
+  id        String   @id @default(cuid())
+  source String
+  summary String
+  segment String
+  severity String
+  status String
+  frequencyScore Float
+  areaId String?
+  area ProductArea? @relation(fields: [areaId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ProductOpportunity {
+  id        String   @id @default(cuid())
+  title String
+  hypothesis String
+  impactScore Float
+  effortScore Float
+  status String
+  owner String
+  areaId String?
+  area ProductArea? @relation(fields: [areaId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Specification {
+  id        String   @id @default(cuid())
+  title String
+  problemRef String
+  scope String
+  acceptanceCriteria String
+  status String
+  approvedAt DateTime?
+  areaId String?
+  area ProductArea? @relation(fields: [areaId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Prototype {
+  id        String   @id @default(cuid())
+  name String
+  kind String
+  url String
+  status String
+  feedbackSummary String
+  createdOn DateTime?
+  areaId String?
+  area ProductArea? @relation(fields: [areaId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model TestPlan {
+  id        String   @id @default(cuid())
+  specRef String
+  coveragesCenarios String
+  caseCount Int
+  status String
+  owner String
+  executedAt DateTime?
+  areaId String?
+  area ProductArea? @relation(fields: [areaId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PullRequestDraft {
+  id        String   @id @default(cuid())
+  specRef String
+  branch String
+  summary String
+  status String
+  filesChanged Int
+  reviewee String
+  areaId String?
+  area ProductArea? @relation(fields: [areaId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ApprovalGate {
+  id        String   @id @default(cuid())
+  gate String
+  artifact String
+  approver String
+  status String
+  decidedAt DateTime?
+  rationale String?
+  areaId String?
+  area ProductArea? @relation(fields: [areaId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model FeedbackSignal {
+  id        String   @id @default(cuid())
+  source String
+  content String
+  sentiment String
+  linkedOpportunity String
+  status String
+  receivedAt DateTime?
+  areaId String?
+  area ProductArea? @relation(fields: [areaId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ReleaseCandidate {
+  id        String   @id @default(cuid())
+  version String
+  scope String
+  readiness String
+  status String
+  targetDate DateTime?
+  gatekeeper String
+  areaId String?
+  area ProductArea? @relation(fields: [areaId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model MetricMovement {
+  id        String   @id @default(cuid())
+  metric String
+  releaseRef String
+  before Float
+  after Float
+  deltaPct Float
+  status String
+  areaId String?
+  area ProductArea? @relation(fields: [areaId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model DesignReview {
+  id        String   @id @default(cuid())
+  artifact String
+  reviewer String
+  outcome String
+  comments String
+  status String
+  heldAt DateTime?
+  areaId String?
+  area ProductArea? @relation(fields: [areaId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
