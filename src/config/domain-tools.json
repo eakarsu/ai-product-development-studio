@@ -1,0 +1,31 @@
+[
+  {
+    "id": "evidence-check",
+    "title": "Evidence completeness checklist",
+    "description": "Check whether supplied requirements have supporting text. Presence does not prove truth or compliance.",
+    "example": {
+      "requirements": [
+        {
+          "requirement": "Signed source record",
+          "evidence": "Source record reference and reviewer notes"
+        }
+      ]
+    }
+  },
+  {
+    "id": "delivery",
+    "title": "Delivery measures",
+    "description": "Calculate actual delivery duration, throughput and rework from supplied item timestamps.",
+    "example": {
+      "periodDays": 7,
+      "items": [
+        {
+          "id": "PR-1",
+          "startedAt": "2026-09-01T10:00:00Z",
+          "deliveredAt": "2026-09-02T10:00:00Z",
+          "reworkHours": 2
+        }
+      ]
+    }
+  }
+]

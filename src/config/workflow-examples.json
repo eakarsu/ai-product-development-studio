@@ -1,0 +1,98 @@
+{
+  "problem-cluster": [
+    {
+      "id": "example-1",
+      "label": "Onboarding friction",
+      "values": {
+        "problems": "Users repeat company details; invitation emails are missed; setup progress is unclear.",
+        "segment": "Fictional small-business administrators",
+        "currentMetric": "Example baseline: 42% finish setup; measurement definition requires review.",
+        "constraints": "Two engineers, six weeks, existing authentication provider"
+      }
+    },
+    {
+      "id": "example-2",
+      "label": "Billing support",
+      "values": {
+        "problems": "Invoices are hard to find; credits are poorly explained; payment retries lack visibility.",
+        "segment": "Fictional finance operations teams",
+        "currentMetric": "Example baseline: 80 billing support tickets per month",
+        "constraints": "No payment processor replacement; preserve audit history"
+      }
+    },
+    {
+      "id": "example-3",
+      "label": "Mobile field work",
+      "values": {
+        "problems": "Offline notes are lost; attachments upload twice; assignment updates arrive late.",
+        "segment": "Fictional field-service coordinators",
+        "currentMetric": "Example baseline: 15 duplicate reports weekly",
+        "constraints": "Intermittent connectivity; existing device fleet"
+      }
+    }
+  ],
+  "spec-draft": [
+    {
+      "id": "example-1",
+      "label": "Guided onboarding",
+      "values": {
+        "opportunity": "Reduce abandoned setup with a resumable onboarding checklist.",
+        "customerEvidence": "Example interviews: three fictional admins could not identify the next step.",
+        "technicalConstraints": "Existing auth, PostgreSQL storage, no new identity provider",
+        "successMetric": "Track defined setup completion and median elapsed time; establish baseline first."
+      }
+    },
+    {
+      "id": "example-2",
+      "label": "Invoice visibility",
+      "values": {
+        "opportunity": "Show invoice status and credit explanations in one view.",
+        "customerEvidence": "Example support notes: fictional users ask for missing invoice context.",
+        "technicalConstraints": "Read-only payment integration; enforce account permissions",
+        "successMetric": "Measure billing support contacts per active account over comparable periods."
+      }
+    },
+    {
+      "id": "example-3",
+      "label": "Reliable offline sync",
+      "values": {
+        "opportunity": "Save field notes locally and reconcile uploads safely.",
+        "customerEvidence": "Example observations: fictional users lose drafts during connection failures.",
+        "technicalConstraints": "Offline-capable client; idempotent API; attachment size limit",
+        "successMetric": "Measure successful sync and duplicate records using a documented event definition."
+      }
+    }
+  ],
+  "pr-draft": [
+    {
+      "id": "example-1",
+      "label": "Validation change",
+      "values": {
+        "specSummary": "Example approved specification: validate invoice totals before saving. Select the actual approved Specification record.",
+        "codebaseNotes": "Example TypeScript API with transactional PostgreSQL writes; repository not connected.",
+        "riskAreas": "Rounding, null values and audit rollback",
+        "testPlan": "Test invalid totals, valid saves, numeric boundaries and rollback on audit failure."
+      }
+    },
+    {
+      "id": "example-2",
+      "label": "Permission guard",
+      "values": {
+        "specSummary": "Example approved specification: restrict account administration to admins. Select the actual approved Specification record.",
+        "codebaseNotes": "Example session authentication and server-side role checks; repository not connected.",
+        "riskAreas": "Stale role claims and disabling the last administrator",
+        "testPlan": "Test analyst denial, manager denial, active admin access and last-admin protection."
+      }
+    },
+    {
+      "id": "example-3",
+      "label": "Retry handling",
+      "values": {
+        "specSummary": "Example approved specification: deduplicate uploads with an idempotency key. Select the actual approved Specification record.",
+        "codebaseNotes": "Example upload endpoint and persisted execution table; repository not connected.",
+        "riskAreas": "Concurrent retry, interrupted upload and mismatched receipts",
+        "testPlan": "Test duplicate requests, partial failures and receipt validation without live side effects."
+      }
+    }
+  ]
+}

@@ -1,0 +1,537 @@
+{
+  "ProductArea": {
+    "name": "ProductArea",
+    "fields": [
+      {
+        "name": "name",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "owner",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "sponsor",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "metric",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "northStar",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "status",
+        "kind": "string",
+        "required": true
+      }
+    ]
+  },
+  "CustomerProblem": {
+    "name": "CustomerProblem",
+    "fields": [
+      {
+        "name": "source",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "summary",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "segment",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "severity",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "status",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "frequencyScore",
+        "kind": "number",
+        "required": true,
+        "min": 0
+      },
+      {
+        "name": "areaId",
+        "kind": "string",
+        "required": false,
+        "relation": "ProductArea"
+      }
+    ],
+    "parent": {
+      "field": "areaId",
+      "entity": "ProductArea"
+    }
+  },
+  "ProductOpportunity": {
+    "name": "ProductOpportunity",
+    "fields": [
+      {
+        "name": "title",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "hypothesis",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "impactScore",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "name": "effortScore",
+        "kind": "number",
+        "required": true,
+        "min": 0
+      },
+      {
+        "name": "status",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "owner",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "areaId",
+        "kind": "string",
+        "required": false,
+        "relation": "ProductArea"
+      }
+    ],
+    "parent": {
+      "field": "areaId",
+      "entity": "ProductArea"
+    }
+  },
+  "Specification": {
+    "name": "Specification",
+    "fields": [
+      {
+        "name": "title",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "problemRef",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "scope",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "acceptanceCriteria",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "status",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "approvedAt",
+        "kind": "date",
+        "required": false
+      },
+      {
+        "name": "areaId",
+        "kind": "string",
+        "required": false,
+        "relation": "ProductArea"
+      }
+    ],
+    "parent": {
+      "field": "areaId",
+      "entity": "ProductArea"
+    }
+  },
+  "Prototype": {
+    "name": "Prototype",
+    "fields": [
+      {
+        "name": "name",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "kind",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "url",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "status",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "feedbackSummary",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "createdOn",
+        "kind": "date",
+        "required": false
+      },
+      {
+        "name": "areaId",
+        "kind": "string",
+        "required": false,
+        "relation": "ProductArea"
+      }
+    ],
+    "parent": {
+      "field": "areaId",
+      "entity": "ProductArea"
+    }
+  },
+  "TestPlan": {
+    "name": "TestPlan",
+    "fields": [
+      {
+        "name": "specRef",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "coveragesCenarios",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "caseCount",
+        "kind": "number",
+        "required": true,
+        "integer": true,
+        "min": 0
+      },
+      {
+        "name": "status",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "owner",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "executedAt",
+        "kind": "date",
+        "required": false
+      },
+      {
+        "name": "areaId",
+        "kind": "string",
+        "required": false,
+        "relation": "ProductArea"
+      }
+    ],
+    "parent": {
+      "field": "areaId",
+      "entity": "ProductArea"
+    }
+  },
+  "PullRequestDraft": {
+    "name": "PullRequestDraft",
+    "fields": [
+      {
+        "name": "specRef",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "branch",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "summary",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "status",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "filesChanged",
+        "kind": "number",
+        "required": true,
+        "integer": true
+      },
+      {
+        "name": "reviewee",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "areaId",
+        "kind": "string",
+        "required": false,
+        "relation": "ProductArea"
+      }
+    ],
+    "parent": {
+      "field": "areaId",
+      "entity": "ProductArea"
+    }
+  },
+  "ApprovalGate": {
+    "name": "ApprovalGate",
+    "fields": [
+      {
+        "name": "gate",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "artifact",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "approver",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "status",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "decidedAt",
+        "kind": "date",
+        "required": false
+      },
+      {
+        "name": "rationale",
+        "kind": "string",
+        "required": false
+      },
+      {
+        "name": "areaId",
+        "kind": "string",
+        "required": false,
+        "relation": "ProductArea"
+      }
+    ],
+    "parent": {
+      "field": "areaId",
+      "entity": "ProductArea"
+    }
+  },
+  "FeedbackSignal": {
+    "name": "FeedbackSignal",
+    "fields": [
+      {
+        "name": "source",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "content",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "sentiment",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "linkedOpportunity",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "status",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "receivedAt",
+        "kind": "date",
+        "required": false
+      },
+      {
+        "name": "areaId",
+        "kind": "string",
+        "required": false,
+        "relation": "ProductArea"
+      }
+    ],
+    "parent": {
+      "field": "areaId",
+      "entity": "ProductArea"
+    }
+  },
+  "ReleaseCandidate": {
+    "name": "ReleaseCandidate",
+    "fields": [
+      {
+        "name": "version",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "scope",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "readiness",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "status",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "targetDate",
+        "kind": "date",
+        "required": false
+      },
+      {
+        "name": "gatekeeper",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "areaId",
+        "kind": "string",
+        "required": false,
+        "relation": "ProductArea"
+      }
+    ],
+    "parent": {
+      "field": "areaId",
+      "entity": "ProductArea"
+    }
+  },
+  "MetricMovement": {
+    "name": "MetricMovement",
+    "fields": [
+      {
+        "name": "metric",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "releaseRef",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "before",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "name": "after",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "name": "deltaPct",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "name": "status",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "areaId",
+        "kind": "string",
+        "required": false,
+        "relation": "ProductArea"
+      }
+    ],
+    "parent": {
+      "field": "areaId",
+      "entity": "ProductArea"
+    }
+  },
+  "DesignReview": {
+    "name": "DesignReview",
+    "fields": [
+      {
+        "name": "artifact",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "reviewer",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "outcome",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "comments",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "status",
+        "kind": "string",
+        "required": true
+      },
+      {
+        "name": "heldAt",
+        "kind": "date",
+        "required": false
+      },
+      {
+        "name": "areaId",
+        "kind": "string",
+        "required": false,
+        "relation": "ProductArea"
+      }
+    ],
+    "parent": {
+      "field": "areaId",
+      "entity": "ProductArea"
+    }
+  }
+}

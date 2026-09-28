@@ -124,21 +124,21 @@ export const entities: Record<string, EntityConfig> = {
 export const workflows: WorkflowConfig[] = [
   {
     slug: "problem-cluster",
-    title: "Problem Clustering",
+    title: "Draft: Problem Clustering",
     description: "Cluster customer problems into opportunities.",
     prompt: "You are a product discovery lead. Cluster the listed customer problems into opportunities with hypotheses, impact and effort estimates.",
     fields: ["problems", "segment", "currentMetric", "constraints"],
   },
   {
     slug: "spec-draft",
-    title: "Spec Drafter",
+    title: "Draft: Spec Drafter",
     description: "Draft a product specification.",
     prompt: "You are a senior product manager. Draft a specification from the opportunity: scope, non-goals, acceptance criteria, telemetry, rollout plan.",
     fields: ["opportunity", "customerEvidence", "technicalConstraints", "successMetric"],
   },
   {
     slug: "pr-draft",
-    title: "PR Drafter",
+    title: "Draft: PR Drafter",
     description: "Draft a pull request plan from an approved spec.",
     prompt: "You are a staff engineer. From the approved spec, outline the PR plan: files touched, testing plan, migration and rollback notes.",
     fields: ["specSummary", "codebaseNotes", "riskAreas", "testPlan"],
